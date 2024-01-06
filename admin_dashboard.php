@@ -80,6 +80,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            margin-right: 10px;
         }
     
         button:hover {
@@ -166,6 +167,7 @@
                         <th>Date of Birth</th>
                         <th>Age</th>
                         <th>Program</th>
+                        <th>Action</th> <!-- New column for buttons -->
                     </tr>
                 </thead>
                 <tbody id="enrollmentDataBody">
@@ -175,7 +177,9 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         // Fetch enrollment data when the page loads
         $(document).ready(function () {
@@ -234,8 +238,37 @@
                 programCell.textContent = enrollment.program;
                 row.appendChild(programCell);
 
+                const actionCell = document.createElement("td");
+                const acceptButton = document.createElement("button");
+                acceptButton.textContent = "Accept";
+                acceptButton.addEventListener("click", function () {
+                    // Handle Accept action here
+                    handleAccept(enrollment.id); // Pass enrollment id or relevant data
+                });
+                actionCell.appendChild(acceptButton);
+
+                const denyButton = document.createElement("button");
+                denyButton.textContent = "Deny/Reject";
+                denyButton.addEventListener("click", function () {
+                    // Handle Deny/Reject action here
+                    handleDeny(enrollment.id); // Pass enrollment id or relevant data
+                });
+                actionCell.appendChild(denyButton);
+
+                row.appendChild(actionCell);
+
                 enrollmentDataBody.appendChild(row);
             });
+        }
+
+        function handleAccept(enrollmentId) {
+            // Implement the logic to accept the enrollment with the provided id
+            console.log("Accept clicked for enrollmentId:", enrollmentId);
+        }
+
+        function handleDeny(enrollmentId) {
+            // Implement the logic to deny/reject the enrollment with the provided id
+            console.log("Deny/Reject clicked for enrollmentId:", enrollmentId);
         }
     </script>
 </body>
