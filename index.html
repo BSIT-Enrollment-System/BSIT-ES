@@ -16,7 +16,7 @@
     height: 100vh;
 
     /* butangi ug url usa ag location sa background */
-    background-image: url(3d-futuristic-background-with-low-poly-plexus-design_1048-11872.jpg);
+    background-image: url(background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -197,7 +197,6 @@
         <p>This is the user page content.</p>
         <a href="#" onclick="logout()">Logout</a>
     </div>
-
     <script>
         const adminCredentials = {
             username: "admin",
@@ -217,6 +216,7 @@
             const loginContainer = document.getElementById("loginContainer");
             const adminContainer = document.getElementById("adminContainer");
             const userContainer = document.getElementById("userContainer");
+
 
             if (userType === "admin" && usernameInput === adminCredentials.username && passwordInput === adminCredentials.password) {
                 // Admin login
